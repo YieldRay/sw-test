@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Loading...</title>
+        <script type="module">
+            const targetSite = "https://github.com/";
+            const scope = location.pathname === "/" ? "/" : "./";
+            await navigator.serviceWorker.register("./core-sw.js", { scope });
+            const html = await fetch(location.href.replace(location.origin, targetSite)).then((res) => res.text());
+            document.write(html);
+        </script>
+    </head>
+        <h1>等待资源加载中。。。</h1>
+        <h2>第一次加载，或长时间停留在此界面，请刷新。</h2>
+    </body>
+</html>
